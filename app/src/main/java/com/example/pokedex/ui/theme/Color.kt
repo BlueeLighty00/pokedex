@@ -1,0 +1,37 @@
+package com.example.pokedex.ui.theme
+
+import androidx.compose.ui.graphics.Color
+
+val Purple80 = Color(0xFFD0BCFF)
+val PurpleGrey80 = Color(0xFFCCC2DC)
+val Pink80 = Color(0xFFEFB8C8)
+
+val Purple40 = Color(0xFF6650a4)
+val PurpleGrey40 = Color(0xFF625b71)
+val Pink40 = Color(0xFF7D5260)
+val Orange = Color(0xFFFF7023)
+val NormalType = Color(0xFFA8A77A)
+val FireType = Color(0xFFEE8130)
+val WaterType = Color(0xFF6390F0)
+val FlyingType = Color(0xFFA98FF3)
+val ElectricType = Color(0xFFF7D02C)
+val GrassType = Color(0xFF7AC74C)
+val IceType = Color(0xFF96D9D6)
+val FightingType = Color(0xFFC22E28)
+val PoisonType = Color(0xFFA33EA1)
+val GroundType = Color(0xFFE2BF65)
+val PsychicType = Color(0xFFF95587)
+val BugType = Color(0xFFA6B91A)
+val RockType = Color(0xFFB6A136)
+val GhostType = Color(0xFF735797)
+val DragonType = Color(0xFF6F35FC)
+val DarkType = Color(0xFF705746)
+val SteelType = Color(0xFFB7B7CE)
+val FairyType = Color(0xFFD685AD)
+
+val HPStat = Color(0xFFF44336)
+val ATKStat = Color(0xFFF59A00)
+val DEFStat = Color(0xFF009688)
+val SPATKStat = Color(0xFFE91E63)
+val SPDEFStat = Color(0xFF9C27B0)
+val SPDStat = Color(0xFF4CAF50)
