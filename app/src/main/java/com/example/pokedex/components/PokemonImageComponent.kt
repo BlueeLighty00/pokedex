@@ -23,6 +23,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import coil.compose.SubcomposeAsyncImage
+import com.example.pokedex.R
 import com.example.pokedex.data.model.Pokemon
 
 @Composable
@@ -37,7 +38,7 @@ fun PokeImage(pokemon: Pokemon) {
             .clip(shape = RoundedCornerShape(bottomStart = 40.dp, bottomEnd = 40.dp)), contentScale = ContentScale.Crop)
         SubcomposeAsyncImage(
             model = if (shiny) pokemon.sprite else pokemon.spriteShiny,
-            loading = { loading() },
+            loading = { Image(painter = painterResource(id = R.drawable.dittoimage), contentDescription = "") },
             contentDescription = "",
             modifier = Modifier
                 .padding(15.dp)

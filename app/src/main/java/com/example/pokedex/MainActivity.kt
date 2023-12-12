@@ -45,7 +45,7 @@ class MainActivity : ComponentActivity() {
                         NavHost(navController = navController, startDestination = "PokemonList")
                         {
                             composable("PokemonData") { Dex(pokemon!!, navController) }
-                            composable("PokemonList") { PokeList(list = pokemonList!!, navController = navController, pokemonViewModel, lifecycleScope) }
+                            composable("PokemonList") { PokeList(list = pokemonList!!, navController = navController, pokemonViewModel) }
                         }
                     }
                 }
