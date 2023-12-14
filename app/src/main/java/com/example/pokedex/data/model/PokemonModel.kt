@@ -6,7 +6,6 @@ import com.google.gson.GsonBuilder
 import java.io.InputStreamReader
 
 
-
 fun getPokemonFromApi(json: String): Pokemon {
     val gsonBuilder = GsonBuilder()
     gsonBuilder.registerTypeAdapter(Pokemon::class.java, PokemonDeserializer())

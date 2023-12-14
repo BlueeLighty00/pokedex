@@ -1,4 +1,4 @@
-package com.example.pokedex.components
+package com.example.pokedex.ui.components
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
@@ -16,22 +16,34 @@ import com.example.pokedex.data.model.Pokemon
 
 @Composable
 fun PokeMeasures(pokemon: Pokemon) {
-    Row(modifier = Modifier
-        .fillMaxWidth()
-        .height(40.dp), horizontalArrangement = Arrangement.Center) {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .height(40.dp), horizontalArrangement = Arrangement.Center
+    ) {
         RowMeasures(pokemon)
     }
-    Row(modifier = Modifier
-        .fillMaxWidth()
-        .height(40.dp), horizontalArrangement = Arrangement.Center) {
-        Row(modifier = Modifier
-            .width(130.dp)
-            .height(30.dp), verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.Center) {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .height(40.dp), horizontalArrangement = Arrangement.Center
+    ) {
+        Row(
+            modifier = Modifier
+                .width(130.dp)
+                .height(30.dp),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.Center
+        ) {
             Text("Weight", color = Color.White, fontSize = 16.sp)
         }
-        Row(modifier = Modifier
-            .width(130.dp)
-            .height(30.dp), verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.Center) {
+        Row(
+            modifier = Modifier
+                .width(130.dp)
+                .height(30.dp),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.Center
+        ) {
             Text("Height", color = Color.White, fontSize = 16.sp)
         }
     }

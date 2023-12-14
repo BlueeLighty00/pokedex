@@ -1,7 +1,6 @@
-package com.example.pokedex.components
+package com.example.pokedex.ui.screens
 
 import androidx.compose.foundation.background
-import androidx.compose.runtime.Composable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -12,19 +11,23 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
-import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import com.example.pokedex.data.model.Pokemon
+import com.example.pokedex.ui.components.PokeImage
+import com.example.pokedex.ui.components.PokeMeasures
+import com.example.pokedex.ui.components.PokeStats
+import com.example.pokedex.ui.components.PokeTopBar
+import com.example.pokedex.ui.components.PokemonNameAbility
+import com.example.pokedex.ui.components.PokemonTypes
+import com.google.accompanist.systemuicontroller.rememberSystemUiController
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun Dex(pokemon: Pokemon, navController: NavHostController) {
+fun PokemonScreen(pokemon: Pokemon, navController: NavHostController) {
     val systemUiController = rememberSystemUiController()
     systemUiController.setStatusBarColor(pokemon.primaryType.color)
 
@@ -32,10 +35,13 @@ fun Dex(pokemon: Pokemon, navController: NavHostController) {
         modifier = Modifier.background(MaterialTheme.colorScheme.background),
         topBar = { PokeTopBar(pokemon, navController) }
     ) {
-        Column(modifier = Modifier
-            .padding(it)
-            .fillMaxSize()
-            .verticalScroll(rememberScrollState()), horizontalAlignment = Alignment.CenterHorizontally) {
+        Column(
+            modifier = Modifier
+                .padding(it)
+                .fillMaxSize()
+                .verticalScroll(rememberScrollState()),
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
 
             PokeImage(pokemon = pokemon)
 
@@ -45,7 +51,7 @@ fun Dex(pokemon: Pokemon, navController: NavHostController) {
 
             Spacer(modifier = Modifier.height(20.dp))
 
-            PokemonTyping(pokemon)
+            PokemonTypes(pokemon)
 
             Spacer(modifier = Modifier.height(10.dp))
 
@@ -56,12 +62,4 @@ fun Dex(pokemon: Pokemon, navController: NavHostController) {
             PokeStats(pokemon)
         }
     }
-}
-
-
-
-@Composable
-private fun PokemonNameAbility(pokemon: Pokemon) {
-    Text(pokemon.name, color = Color.White, fontSize = 30.sp)
-    Text(text = "Ability: ${pokemon.ability}", color = Color.White, fontSize = 20.sp)
 }

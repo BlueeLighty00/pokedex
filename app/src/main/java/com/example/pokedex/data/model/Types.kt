@@ -2,9 +2,26 @@ package com.example.pokedex.data.model
 
 import androidx.compose.ui.graphics.Color
 import com.example.pokedex.R
-import com.example.pokedex.ui.theme.*
+import com.example.pokedex.ui.theme.BugType
+import com.example.pokedex.ui.theme.DarkType
+import com.example.pokedex.ui.theme.DragonType
+import com.example.pokedex.ui.theme.ElectricType
+import com.example.pokedex.ui.theme.FairyType
+import com.example.pokedex.ui.theme.FightingType
+import com.example.pokedex.ui.theme.FireType
+import com.example.pokedex.ui.theme.FlyingType
+import com.example.pokedex.ui.theme.GhostType
+import com.example.pokedex.ui.theme.GrassType
+import com.example.pokedex.ui.theme.GroundType
+import com.example.pokedex.ui.theme.IceType
+import com.example.pokedex.ui.theme.NormalType
+import com.example.pokedex.ui.theme.PoisonType
+import com.example.pokedex.ui.theme.PsychicType
+import com.example.pokedex.ui.theme.RockType
+import com.example.pokedex.ui.theme.SteelType
+import com.example.pokedex.ui.theme.WaterType
 
-enum class Types(val color: Color,val image: Int) {
+enum class Types(val color: Color, val image: Int) {
     NORMAL(NormalType, R.drawable.normalbackground),
     FIRE(FireType, R.drawable.firebackground),
     WATER(WaterType, R.drawable.waterbackground),

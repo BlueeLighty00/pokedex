@@ -1,7 +1,6 @@
 package com.example.pokedex.data.model
 
 
-
-data class PokemonList (
+data class PokemonList(
     val pokemonList: ArrayList<String>
 )

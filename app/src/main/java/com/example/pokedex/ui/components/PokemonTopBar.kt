@@ -1,4 +1,4 @@
-package com.example.pokedex.components
+package com.example.pokedex.ui.components
 
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
@@ -11,7 +11,6 @@ import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.sp
-import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import com.example.pokedex.data.model.Pokemon
 
@@ -31,9 +30,11 @@ fun PokeTopBar(pokemon: Pokemon, navController: NavHostController) {
             }
         },
         actions = {
-            Text(text = "#${"%04d".format(pokemon.id)}",
+            Text(
+                text = "#${"%04d".format(pokemon.id)}",
                 color = Color.White,
-                fontSize = 20.sp)
+                fontSize = 20.sp
+            )
         }
     )
 }

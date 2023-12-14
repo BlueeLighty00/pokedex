@@ -1,6 +1,6 @@
 package com.example.pokedex.data.model
 
-data class Pokemon (
+data class Pokemon(
     val id: Int,
     val sprite: String,
     val spriteShiny: String,
@@ -10,5 +10,5 @@ data class Pokemon (
     val secondaryType: Types?,
     val weight: Float,
     val height: Float,
-    val stats :Map<String, Int>
+    val stats: Map<String, Int>
 )

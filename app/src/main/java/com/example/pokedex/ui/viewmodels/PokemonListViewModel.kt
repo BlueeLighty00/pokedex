@@ -1,4 +1,4 @@
-package com.example.pokedex.viewmodel
+package com.example.pokedex.ui.viewmodels
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -11,7 +11,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class PokemonListViewModel(): ViewModel(){
+class PokemonListViewModel() : ViewModel() {
 
     private var _pokemonList: MutableLiveData<PokemonList> = MutableLiveData<PokemonList>()
 

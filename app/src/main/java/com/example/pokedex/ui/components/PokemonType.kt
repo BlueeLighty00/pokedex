@@ -1,4 +1,4 @@
-package com.example.pokedex.components
+package com.example.pokedex.ui.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -17,12 +17,14 @@ import com.example.pokedex.data.model.Pokemon
 import com.example.pokedex.data.model.Types
 
 @Composable
-fun PokemonTyping(pokemon: Pokemon) {
-    Row(modifier = Modifier
-        .fillMaxWidth()
-        .height(40.dp), horizontalArrangement = Arrangement.Center) {
+fun PokemonTypes(pokemon: Pokemon) {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .height(40.dp), horizontalArrangement = Arrangement.Center
+    ) {
         RowType(type = pokemon.primaryType)
-        if(pokemon.secondaryType != null) {
+        if (pokemon.secondaryType != null) {
             Spacer(modifier = Modifier.width(20.dp))
             RowType(type = pokemon.secondaryType)
         }
@@ -31,18 +33,22 @@ fun PokemonTyping(pokemon: Pokemon) {
 
 @Composable
 fun RowType(type: Types) {
-    Row(modifier = Modifier
-        .background(
-            color = type.color,
-            shape = RoundedCornerShape(
-                bottomEnd = 40.dp,
-                bottomStart = 40.dp,
-                topEnd = 40.dp,
-                topStart = 40.dp
+    Row(
+        modifier = Modifier
+            .background(
+                color = type.color,
+                shape = RoundedCornerShape(
+                    bottomEnd = 40.dp,
+                    bottomStart = 40.dp,
+                    topEnd = 40.dp,
+                    topStart = 40.dp
+                )
             )
-        )
-        .width(130.dp)
-        .height(30.dp), verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.Center) {
+            .width(130.dp)
+            .height(30.dp),
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.Center
+    ) {
         Text(type.name)
     }
 }
