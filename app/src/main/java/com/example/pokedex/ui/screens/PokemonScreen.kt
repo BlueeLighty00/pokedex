@@ -12,6 +12,8 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
@@ -23,43 +25,51 @@ import com.example.pokedex.ui.components.PokeStats
 import com.example.pokedex.ui.components.PokeTopBar
 import com.example.pokedex.ui.components.PokemonNameAbility
 import com.example.pokedex.ui.components.PokemonTypes
+import com.example.pokedex.ui.viewmodels.PokemonViewModel
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun PokemonScreen(pokemon: Pokemon, navController: NavHostController) {
-    val systemUiController = rememberSystemUiController()
-    systemUiController.setStatusBarColor(pokemon.primaryType.color)
+fun PokemonScreen(pokemonViewModel: PokemonViewModel, navController: NavHostController) {
 
-    Scaffold(
-        modifier = Modifier.background(MaterialTheme.colorScheme.background),
-        topBar = { PokeTopBar(pokemon, navController) }
-    ) {
-        Column(
-            modifier = Modifier
-                .padding(it)
-                .fillMaxSize()
-                .verticalScroll(rememberScrollState()),
-            horizontalAlignment = Alignment.CenterHorizontally
+    val pokemon: Pokemon? by pokemonViewModel.pokemon.observeAsState()
+
+    if(pokemon == null) {
+
+    }else {
+        val systemUiController = rememberSystemUiController()
+        systemUiController.setStatusBarColor(pokemon!!.primaryType.color)
+
+        Scaffold(
+            modifier = Modifier.background(MaterialTheme.colorScheme.background),
+            topBar = { PokeTopBar(pokemon!!, navController) }
         ) {
+            Column(
+                modifier = Modifier
+                    .padding(it)
+                    .fillMaxSize()
+                    .verticalScroll(rememberScrollState()),
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
 
-            PokeImage(pokemon = pokemon)
+                PokeImage(pokemon = pokemon!!)
 
-            Spacer(modifier = Modifier.height(25.dp))
+                Spacer(modifier = Modifier.height(25.dp))
 
-            PokemonNameAbility(pokemon)
+                PokemonNameAbility(pokemon!!)
 
-            Spacer(modifier = Modifier.height(20.dp))
+                Spacer(modifier = Modifier.height(20.dp))
 
-            PokemonTypes(pokemon)
+                PokemonTypes(pokemon!!)
 
-            Spacer(modifier = Modifier.height(10.dp))
+                Spacer(modifier = Modifier.height(10.dp))
 
-            PokeMeasures(pokemon)
+                PokeMeasures(pokemon!!)
 
-            Spacer(modifier = Modifier.height(10.dp))
+                Spacer(modifier = Modifier.height(10.dp))
 
-            PokeStats(pokemon)
+                PokeStats(pokemon!!)
+            }
         }
     }
 }

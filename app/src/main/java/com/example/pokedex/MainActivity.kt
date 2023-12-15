@@ -30,22 +30,19 @@ class MainActivity : ComponentActivity() {
             PokedexTheme {
                 val pokemonViewModel: PokemonViewModel by viewModels()
                 val pokemonListViewModel = PokemonListViewModel()
-
                 val pokemon by pokemonViewModel.pokemon.observeAsState()
                 val pokemonList by pokemonListViewModel.pokemonList.observeAsState()
                 val navController = rememberNavController()
-
-
 
                 Surface(
                     modifier = Modifier
                         .background(MaterialTheme.colorScheme.background)
                         .fillMaxSize()
                 ) {
-                    if (pokemon != null && pokemonList != null) {
+                    if (pokemonList != null) {
                         NavHost(navController = navController, startDestination = "PokemonList")
                         {
-                            composable("PokemonData") { PokemonScreen(pokemon!!, navController) }
+                            composable("PokemonData") { PokemonScreen(pokemonViewModel, navController) }
                             composable("PokemonList") {
                                 PokeListScreen(
                                     list = pokemonList!!,
