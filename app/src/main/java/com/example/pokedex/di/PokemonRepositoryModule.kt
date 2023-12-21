@@ -1,5 +1,7 @@
-package com.example.pokedex.data
+package com.example.pokedex.di
 
+import com.example.pokedex.domain.repositories.IPokemonRepository
+import com.example.pokedex.data.repositories.PokemonAPIRepositoryImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn

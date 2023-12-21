@@ -1,4 +1,4 @@
-package com.example.pokedex.data.api
+package com.example.pokedex.data.sources.remote.api
 
 import retrofit2.http.GET
 import retrofit2.http.Headers

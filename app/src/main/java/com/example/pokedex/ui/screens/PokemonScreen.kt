@@ -18,7 +18,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
-import com.example.pokedex.data.model.Pokemon
+import com.example.pokedex.domain.models.Pokemon
 import com.example.pokedex.ui.components.PokeImage
 import com.example.pokedex.ui.components.PokeMeasures
 import com.example.pokedex.ui.components.PokeStats

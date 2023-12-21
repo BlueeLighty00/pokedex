@@ -4,9 +4,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.pokedex.data.IPokemonRepository
-import com.example.pokedex.data.PokemonAPIRepositoryImpl
-import com.example.pokedex.data.model.PokemonList
+import com.example.pokedex.domain.repositories.IPokemonRepository
+import com.example.pokedex.domain.models.PokemonList
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

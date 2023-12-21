@@ -1,9 +1,10 @@
-package com.example.pokedex.data
+package com.example.pokedex.data.repositories
 
 import android.app.Application
-import com.example.pokedex.data.model.Pokemon
-import com.example.pokedex.data.model.PokemonList
-import com.example.pokedex.data.utils.PokemonDeserializer
+import com.example.pokedex.domain.models.Pokemon
+import com.example.pokedex.domain.models.PokemonList
+import com.example.pokedex.data.utils.deserializer.PokemonDeserializer
+import com.example.pokedex.domain.repositories.IPokemonRepository
 import com.google.gson.GsonBuilder
 import java.io.InputStreamReader
 import javax.inject.Inject

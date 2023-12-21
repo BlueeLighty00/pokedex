@@ -12,7 +12,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
-import com.example.pokedex.data.model.Pokemon
+import com.example.pokedex.domain.models.Pokemon
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

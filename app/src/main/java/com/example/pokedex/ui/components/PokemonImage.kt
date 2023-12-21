@@ -23,7 +23,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import coil.compose.SubcomposeAsyncImage
 import com.example.pokedex.R
-import com.example.pokedex.data.model.Pokemon
+import com.example.pokedex.domain.models.Pokemon
 
 @Composable
 fun PokeImage(pokemon: Pokemon) {

@@ -17,7 +17,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.example.pokedex.R
-import com.example.pokedex.data.model.PokemonList
+import com.example.pokedex.domain.models.PokemonList
 import com.example.pokedex.ui.components.CardListPokemon
 import com.example.pokedex.ui.viewmodels.PokemonViewModel
 

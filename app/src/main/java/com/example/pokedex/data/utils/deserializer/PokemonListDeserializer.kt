@@ -1,6 +1,6 @@
-package com.example.pokedex.data.utils
+package com.example.pokedex.data.utils.deserializer
 
-import com.example.pokedex.data.model.PokemonList
+import com.example.pokedex.domain.models.PokemonList
 import com.google.gson.JsonDeserializationContext
 import com.google.gson.JsonDeserializer
 import com.google.gson.JsonElement
