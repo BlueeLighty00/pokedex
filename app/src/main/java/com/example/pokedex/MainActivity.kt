@@ -29,8 +29,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             PokedexTheme {
                 val pokemonViewModel: PokemonViewModel by viewModels()
-                val pokemonListViewModel = PokemonListViewModel()
-                val pokemon by pokemonViewModel.pokemon.observeAsState()
+                val pokemonListViewModel : PokemonListViewModel by viewModels()
                 val pokemonList by pokemonListViewModel.pokemonList.observeAsState()
                 val navController = rememberNavController()
 

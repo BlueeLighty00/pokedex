@@ -1,4 +1,17 @@
 package com.example.pokedex.data
 
-object PokemonRepositoryModule {
+import dagger.Binds
+import dagger.Module
+import dagger.hilt.InstallIn
+import dagger.hilt.android.components.ViewModelComponent
+
+
+@Module
+@InstallIn(ViewModelComponent::class)
+abstract class PokemonRepositoryModule {
+
+    @Binds
+    abstract fun bindRepository(
+        pokemonAPIRepositoryImpl: PokemonAPIRepositoryImpl
+    ): IPokemonRepository
 }

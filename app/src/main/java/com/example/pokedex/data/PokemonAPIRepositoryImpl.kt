@@ -2,12 +2,14 @@ package com.example.pokedex.data
 
 import com.example.pokedex.data.api.RetrofitInstance
 import com.example.pokedex.data.model.Pokemon
-import com.example.pokedex.data.utils.PokemonDeserializer
 import com.example.pokedex.data.model.PokemonList
+import com.example.pokedex.data.utils.PokemonDeserializer
 import com.example.pokedex.data.utils.PokemonListDeserializer
 import com.google.gson.GsonBuilder
+import javax.inject.Inject
 
-class PokemonAPIRepositoryImpl: IPokemonRepository {
+
+class PokemonAPIRepositoryImpl @Inject constructor(): IPokemonRepository {
     override suspend fun getPokemon(name: String): Pokemon {
         val json = RetrofitInstance.api.getPokemonData(name)
         val gsonBuilder = GsonBuilder()
