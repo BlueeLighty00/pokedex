@@ -43,10 +43,7 @@ fun PokeImage(pokemon: Pokemon) {
         SubcomposeAsyncImage(
             model = if (shiny) pokemon.sprite else pokemon.spriteShiny,
             loading = {
-                Image(
-                    painter = painterResource(id = R.drawable.dittoimage),
-                    contentDescription = ""
-                )
+                ProgressBar(modifier = Modifier.matchParentSize().padding(60.dp))
             },
             contentDescription = "",
             modifier = Modifier
