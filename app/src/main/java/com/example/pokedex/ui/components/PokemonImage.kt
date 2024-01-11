@@ -22,7 +22,6 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import coil.compose.SubcomposeAsyncImage
-import com.example.pokedex.R
 import com.example.pokedex.domain.models.Pokemon
 
 @Composable
@@ -43,6 +42,9 @@ fun PokeImage(pokemon: Pokemon) {
         SubcomposeAsyncImage(
             model = if (shiny) pokemon.sprite else pokemon.spriteShiny,
             loading = {
+                ProgressBar(modifier = Modifier.matchParentSize().padding(60.dp))
+            },
+            error = {
                 ProgressBar(modifier = Modifier.matchParentSize().padding(60.dp))
             },
             contentDescription = "",

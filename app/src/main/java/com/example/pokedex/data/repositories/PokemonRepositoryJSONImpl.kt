@@ -1,9 +1,10 @@
 package com.example.pokedex.data.repositories
 
 import android.app.Application
+import com.example.pokedex.data.utils.deserializer.PokemonDeserializer
+import com.example.pokedex.data.utils.deserializer.PokemonListDeserializer
 import com.example.pokedex.domain.models.Pokemon
 import com.example.pokedex.domain.models.PokemonList
-import com.example.pokedex.data.utils.deserializer.PokemonDeserializer
 import com.example.pokedex.domain.repositories.IPokemonRepository
 import com.google.gson.GsonBuilder
 import java.io.InputStreamReader
@@ -23,7 +24,12 @@ class PokemonRepositoryJSONImpl @Inject constructor(application: Application): I
     }
 
     override suspend fun getPokemonList(limit: Int): PokemonList {
-        TODO("Not yet implemented")
+        val json = InputStreamReader(context.assets.open("list.json"))
+        val gsonBuilder = GsonBuilder()
+        gsonBuilder.registerTypeAdapter(PokemonList::class.java, PokemonListDeserializer())
+        val gson = gsonBuilder.create()
+
+        return  gson.fromJson(json, PokemonList::class.java)
     }
 
 }
