@@ -3,23 +3,28 @@ package com.example.pokedex.ui.screens
 import android.media.MediaPlayer
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.lazy.staggeredgrid.LazyVerticalStaggeredGrid
 import androidx.compose.foundation.lazy.staggeredgrid.StaggeredGridCells
 import androidx.compose.foundation.lazy.staggeredgrid.items
 import androidx.compose.material3.MaterialTheme.colorScheme
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.livedata.observeAsState
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.example.pokedex.R
 import com.example.pokedex.domain.models.PokemonList
-import com.example.pokedex.ui.components.CardListPokemon
+import com.example.pokedex.ui.components.RowListPokemon
+import com.example.pokedex.ui.components.SearchBar
 import com.example.pokedex.ui.viewmodels.PokemonViewModel
+import com.example.pokedex.ui.viewmodels.SearchBarViewModel
 
 @Composable
 fun PokeListScreen(
@@ -28,18 +33,28 @@ fun PokeListScreen(
     pokemonViewModel: PokemonViewModel
 ) {
     val mMediaPlayer = MediaPlayer.create(LocalContext.current, R.raw.whosthatpokemon)
-    LazyVerticalStaggeredGrid(columns = StaggeredGridCells.Fixed(3)) {
-        items(list.pokemonList) {
-            Row(modifier = Modifier
-                .fillMaxWidth()
-                .background(colorScheme.background)
-                .clickable {
-                    pokemonViewModel.loadPokemon(it)
-                    navController.navigate("PokemonData")
-                    mMediaPlayer.start()
-                }) {
-                Spacer(modifier = Modifier.height(30.dp))
-                CardListPokemon(it)
+    val searchBarViewModel = SearchBarViewModel()
+    Column(modifier = Modifier.fillMaxSize()) {
+
+        SearchBar(searchBarViewModel = searchBarViewModel)
+
+        val query = searchBarViewModel.query.observeAsState()
+
+        LazyVerticalStaggeredGrid(columns = StaggeredGridCells.Fixed(1)) {
+            items(list.pokemonList) { namePokemon ->
+                if (query.value == "" || namePokemon.contains(query.value.toString(), ignoreCase = true)) {
+                    RowListPokemon(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .background(colorScheme.background)
+                            .clickable {
+                                pokemonViewModel.loadPokemon(namePokemon)
+                                navController.navigate("PokemonData")
+                                mMediaPlayer.start()
+                            },
+                        namePokemon = namePokemon
+                    )
+                }
             }
         }
     }

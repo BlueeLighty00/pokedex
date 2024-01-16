@@ -1,8 +1,6 @@
 package com.example.pokedex.di
 
-import com.example.pokedex.data.repositories.PokemonAPIRepositoryImpl
 import com.example.pokedex.data.repositories.PokemonFallbackRepositoryImpl
-import com.example.pokedex.data.repositories.PokemonRepositoryJSONImpl
 import com.example.pokedex.domain.repositories.IPokemonRepository
 import dagger.Binds
 import dagger.Module

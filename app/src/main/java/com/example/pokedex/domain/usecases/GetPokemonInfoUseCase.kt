@@ -1,6 +1,5 @@
 package com.example.pokedex.domain.usecases
 
-import com.example.pokedex.data.repositories.PokemonRepositoryJSONImpl
 import com.example.pokedex.domain.models.Pokemon
 import com.example.pokedex.domain.repositories.IPokemonRepository
 import javax.inject.Inject
