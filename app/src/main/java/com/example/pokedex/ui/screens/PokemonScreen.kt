@@ -28,7 +28,6 @@ import com.example.pokedex.ui.components.PokemonTypes
 import com.example.pokedex.ui.viewmodels.PokemonViewModel
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun PokemonScreen(pokemonViewModel: PokemonViewModel, navController: NavHostController) {
 

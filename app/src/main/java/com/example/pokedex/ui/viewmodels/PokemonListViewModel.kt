@@ -19,15 +19,31 @@ class PokemonListViewModel @Inject constructor(
 
     private var _pokemonList: MutableLiveData<PokemonList> = MutableLiveData<PokemonList>()
 
-    val pokemonList: LiveData<PokemonList> = _pokemonList
+    private var _pokemonListFiltered: MutableLiveData<ArrayList<String>> = MutableLiveData()
+
+    val pokemonListFiltered: LiveData<ArrayList<String>> = _pokemonListFiltered
 
     init {
         viewModelScope.launch {
-            _pokemonList.postValue(
+            _pokemonList.value =
                 withContext(Dispatchers.IO) {
                     listUseCase.getList(100000)
                 }
-            )
+            _pokemonListFiltered.value = _pokemonList.value?.pokemonList?.clone() as ArrayList<String>
+        }
+    }
+
+    fun filterList(query: String){
+        val lista: ArrayList<String> = ArrayList()
+        if(query.isBlank()){
+            _pokemonListFiltered.value = _pokemonList.value?.pokemonList?.clone() as ArrayList<String>
+        }else{
+            _pokemonList.value?.pokemonList?.forEach {
+                if(it.contains(query)) {
+                    lista.add(it)
+                }
+            }
+            _pokemonListFiltered.value = lista
         }
     }
 }

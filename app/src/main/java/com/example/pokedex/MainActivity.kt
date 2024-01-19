@@ -8,8 +8,6 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -19,6 +17,7 @@ import com.example.pokedex.ui.screens.PokemonScreen
 import com.example.pokedex.ui.theme.PokedexTheme
 import com.example.pokedex.ui.viewmodels.PokemonListViewModel
 import com.example.pokedex.ui.viewmodels.PokemonViewModel
+import com.example.pokedex.ui.viewmodels.SearchBarViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -29,26 +28,25 @@ class MainActivity : ComponentActivity() {
         setContent {
             PokedexTheme {
                 val pokemonViewModel: PokemonViewModel by viewModels()
-                val pokemonListViewModel : PokemonListViewModel by viewModels()
-                val pokemonList by pokemonListViewModel.pokemonList.observeAsState()
+                val pokemonListViewModel: PokemonListViewModel by viewModels()
                 val navController = rememberNavController()
+                val searchBarViewModel = SearchBarViewModel()
 
                 Surface(
                     modifier = Modifier
                         .background(MaterialTheme.colorScheme.background)
                         .fillMaxSize()
                 ) {
-                    if (pokemonList != null) {
-                        NavHost(navController = navController, startDestination = "PokemonList")
-                        {
-                            composable("PokemonData") { PokemonScreen(pokemonViewModel, navController) }
-                            composable("PokemonList") {
-                                PokeListScreen(
-                                    list = pokemonList!!,
-                                    navController = navController,
-                                    pokemonViewModel
-                                )
-                            }
+                    NavHost(navController = navController, startDestination = "PokemonList")
+                    {
+                        composable("PokemonData") { PokemonScreen(pokemonViewModel, navController) }
+                        composable("PokemonList") {
+                            PokeListScreen(
+                                list = pokemonListViewModel,
+                                navController = navController,
+                                pokemonViewModel,
+                                searchBarViewModel
+                            )
                         }
                     }
                 }

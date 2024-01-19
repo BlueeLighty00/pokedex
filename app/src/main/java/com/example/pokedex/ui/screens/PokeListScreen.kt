@@ -11,38 +11,35 @@ import androidx.compose.foundation.lazy.staggeredgrid.StaggeredGridCells
 import androidx.compose.foundation.lazy.staggeredgrid.items
 import androidx.compose.material3.MaterialTheme.colorScheme
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.NavHostController
 import com.example.pokedex.R
-import com.example.pokedex.domain.models.PokemonList
 import com.example.pokedex.ui.components.RowListPokemon
 import com.example.pokedex.ui.components.SearchBar
+import com.example.pokedex.ui.viewmodels.PokemonListViewModel
 import com.example.pokedex.ui.viewmodels.PokemonViewModel
 import com.example.pokedex.ui.viewmodels.SearchBarViewModel
 
 @Composable
 fun PokeListScreen(
-    list: PokemonList,
+    list: PokemonListViewModel,
     navController: NavHostController,
-    pokemonViewModel: PokemonViewModel
+    pokemonViewModel: PokemonViewModel,
+    searchBarViewModel: SearchBarViewModel
 ) {
     val mMediaPlayer = MediaPlayer.create(LocalContext.current, R.raw.whosthatpokemon)
-    val searchBarViewModel = SearchBarViewModel()
+
     Column(modifier = Modifier.fillMaxSize()) {
 
-        SearchBar(searchBarViewModel = searchBarViewModel)
+        SearchBar(searchBarViewModel = searchBarViewModel, pokemonListViewModel = list)
 
-        val query = searchBarViewModel.query.observeAsState()
+        val pokeList = list.pokemonListFiltered.observeAsState()
 
-        LazyVerticalStaggeredGrid(columns = StaggeredGridCells.Fixed(1)) {
-            items(list.pokemonList) { namePokemon ->
-                if (query.value == "" || namePokemon.contains(query.value.toString(), ignoreCase = true)) {
+        if (pokeList.value != null) {
+            LazyVerticalStaggeredGrid(columns = StaggeredGridCells.Fixed(1)) {
+                items(pokeList.value!!) { namePokemon ->
                     RowListPokemon(
                         modifier = Modifier
                             .fillMaxWidth()

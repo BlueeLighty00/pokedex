@@ -17,17 +17,15 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import com.example.pokedex.ui.viewmodels.PokemonListViewModel
 import com.example.pokedex.ui.viewmodels.SearchBarViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun SearchBar(searchBarViewModel: SearchBarViewModel) {
+fun SearchBar(searchBarViewModel: SearchBarViewModel, pokemonListViewModel: PokemonListViewModel) {
     val active by searchBarViewModel.active.observeAsState()
     val searchHistory by searchBarViewModel.searchHistory.observeAsState()
     val query by searchBarViewModel.query.observeAsState()
@@ -47,8 +45,9 @@ fun SearchBar(searchBarViewModel: SearchBarViewModel) {
                 searchBarViewModel.setActualQuery(it)
             },
             onSearch = {
-                searchBarViewModel.setActive(false)
                 searchBarViewModel.addToHistory(it)
+                pokemonListViewModel.filterList(it)
+                searchBarViewModel.setActive(false)
             },
             colors = SearchBarDefaults.colors(
                 containerColor = Color.White,
@@ -73,9 +72,9 @@ fun SearchBar(searchBarViewModel: SearchBarViewModel) {
                         .fillMaxWidth()
                         .padding(all = 14.dp)
                         .clickable { searchBarViewModel.setActualQuery(it) }) {
-                        Icon(imageVector = Icons.Default.History, contentDescription = null)
+                        Icon(imageVector = Icons.Default.History, contentDescription = null, tint = Color.Black)
                         Spacer(modifier = Modifier.width(10.dp))
-                        Text(text = it)
+                        Text(text = it, color = Color.Black)
                     }
                 }
             }
