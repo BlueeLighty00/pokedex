@@ -14,6 +14,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.pokedex.ui.screens.PokeListScreen
 import com.example.pokedex.ui.screens.PokemonScreen
+import com.example.pokedex.ui.screens.WelcomeScreen
 import com.example.pokedex.ui.theme.PokedexTheme
 import com.example.pokedex.ui.viewmodels.PokemonListViewModel
 import com.example.pokedex.ui.viewmodels.PokemonViewModel
@@ -37,7 +38,7 @@ class MainActivity : ComponentActivity() {
                         .background(MaterialTheme.colorScheme.background)
                         .fillMaxSize()
                 ) {
-                    NavHost(navController = navController, startDestination = "PokemonList")
+                    NavHost(navController = navController, startDestination = "WelcomeScreen")
                     {
                         composable("PokemonData") { PokemonScreen(pokemonViewModel, navController) }
                         composable("PokemonList") {
@@ -48,6 +49,7 @@ class MainActivity : ComponentActivity() {
                                 searchBarViewModel
                             )
                         }
+                        composable("WelcomeScreen") { WelcomeScreen(navController = navController) }
                     }
                 }
             }
