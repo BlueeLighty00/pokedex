@@ -16,6 +16,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.NavHostController
 import com.example.pokedex.R
+import com.example.pokedex.ui.components.ProgressBar
 import com.example.pokedex.ui.components.RowListPokemon
 import com.example.pokedex.ui.components.SearchBar
 import com.example.pokedex.ui.viewmodels.PokemonListViewModel
@@ -53,6 +54,8 @@ fun PokeListScreen(
                     )
                 }
             }
+        }else {
+            ProgressBar(modifier = Modifier.fillMaxSize())
         }
     }
 }
